@@ -3703,9 +3703,9 @@
     title = parseSentence$2(title).text(); //amazingly, you can see inline {{templates}} in this text, too
     //... let's not think about that now.
 
-    var title_templates = title.match(/\{\{.+?\}\}/, '');
+    var title_templates = title.match(/\{\{(.+?)\}\}/, '');
     title = title.replace(/\{\{.+?\}\}/, '');
-    title = title + 'dzik'; //same for references (i know..)
+    title = title; //same for references (i know..)
 
     var obj = {
       wiki: title
@@ -3722,7 +3722,6 @@
 
     section.title = title;
     section.title_templates = title_templates;
-    console.log("YYYYYYYYYYYY", title_templates);
     section.depth = depth;
     return section;
   };
