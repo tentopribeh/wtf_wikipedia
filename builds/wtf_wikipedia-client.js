@@ -74,7 +74,7 @@
     if (typeof o === "string") return _arrayLikeToArray(o, minLen);
     var n = Object.prototype.toString.call(o).slice(8, -1);
     if (n === "Object" && o.constructor) n = o.constructor.name;
-    if (n === "Map" || n === "Set") return Array.from(n);
+    if (n === "Map" || n === "Set") return Array.from(o);
     if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
   }
 
@@ -3703,7 +3703,9 @@
     title = parseSentence$2(title).text(); //amazingly, you can see inline {{templates}} in this text, too
     //... let's not think about that now.
 
-    title = title.replace(/\{\{.+?\}\}/, ''); //same for references (i know..)
+    var title_templates = title.match(/\{\{.+?\}\}/, '');
+    title = title.replace(/\{\{.+?\}\}/, '');
+    title = title + 'dzik'; //same for references (i know..)
 
     var obj = {
       wiki: title
@@ -3719,6 +3721,8 @@
     }
 
     section.title = title;
+    section.title_templates = title_templates;
+    console.log("YYYYYYYYYYYY", title_templates);
     section.depth = depth;
     return section;
   };
@@ -8541,6 +8545,7 @@
         depth: null,
         wiki: wiki,
         templates: [],
+        title_templates: [],
         tables: [],
         infoboxes: [],
         references: []
