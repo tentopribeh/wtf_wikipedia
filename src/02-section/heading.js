@@ -15,6 +15,8 @@ const parseHeading = function(section, str) {
   title = parseSentence(title).text()
   //amazingly, you can see inline {{templates}} in this text, too
   //... let's not think about that now.
+  const title_templates = title.match(/\{\{.+?\}\}/, '')
+
   title = title.replace(/\{\{.+?\}\}/, '')
   //same for references (i know..)
   let obj = { wiki: title }
@@ -27,6 +29,7 @@ const parseHeading = function(section, str) {
     depth = m[1].length - 2
   }
   section.title = title
+  section.title_templates = title_templates
   section.depth = depth
   return section
 }
