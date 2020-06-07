@@ -30,6 +30,7 @@ const parseHeading = function(section, str) {
   }
   section.title = title
   section.title_templates = title_templates
+  console.log("YYYYYYYYYYYY", title_templates)
   section.depth = depth
   return section
 }
