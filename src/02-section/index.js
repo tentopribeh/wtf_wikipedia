@@ -62,6 +62,7 @@ const parseSections = function(doc) {
       depth: null,
       wiki: wiki,
       templates: [],
+      title_templates: [],
       tables: [],
       infoboxes: [],
       references: []

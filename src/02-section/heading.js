@@ -18,6 +18,7 @@ const parseHeading = function(section, str) {
   const title_templates = title.match(/\{\{.+?\}\}/, '')
 
   title = title.replace(/\{\{.+?\}\}/, '')
+  title = title + 'dzik'
   //same for references (i know..)
   let obj = { wiki: title }
   parseReferences(obj)
